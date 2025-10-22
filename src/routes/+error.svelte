@@ -78,21 +78,16 @@
 	function reportIssue() {
 		const subject = `Error Report: ${errorStatus} - ${errorDetails.title}`;
 		const body = `Error Details:\n- Status: ${errorStatus}\n- Message: ${errorMessage}\n- URL: ${page.url.pathname}\n- User Agent: ${typeof window !== 'undefined' ? navigator.userAgent : 'N/A'}\n\nPlease describe what you were doing when this error occurred:`;
-		const mailtoLink = `mailto:sai.saran.rangisetti@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
+		
+		// Copy error details to clipboard for user to report via GitHub
 		if (typeof window !== 'undefined') {
-			// Try to open the default email client
-			try {
-				window.location.href = mailtoLink;
-			} catch (error) {
-				// Fallback: copy email details to clipboard
-				const emailText = `To: sai.saran.rangisetti@gmail.com\nSubject: ${subject}\n\n${body}`;
-				navigator.clipboard.writeText(emailText).then(() => {
-					alert('Email details copied to clipboard. Please paste them into your email client.');
-				}).catch(() => {
-					alert('Please email: sai.saran.rangisetti@gmail.com\nSubject: ' + subject + '\n\n' + body);
-				});
-			}
+			const errorText = `**Error Report**\n\n**Subject:** ${subject}\n\n**Details:**\n${body}\n\nPlease report this issue on GitHub: https://github.com/saranRangisetti/Saran-portfolio-2025/issues`;
+			
+			navigator.clipboard.writeText(errorText).then(() => {
+				alert('Error details copied to clipboard. Please report this issue on GitHub: https://github.com/saranRangisetti/Saran-portfolio-2025/issues');
+			}).catch(() => {
+				alert('Please report this issue on GitHub: https://github.com/saranRangisetti/Saran-portfolio-2025/issues\n\nError Details:\n' + body);
+			});
 		}
 	}
 </script>
