@@ -47,7 +47,7 @@
 				role="button"
 				tabindex="0"
 			>
-				<a href="https://github.com/VoidArchive/anishshrestha.com">Made with SvelteKit</a>
+				<a href="https://github.com/saranRangisetti/Saran-portfolio-2025">Made with SvelteKit</a>
 			</span>
 		</p>
 	</div>
