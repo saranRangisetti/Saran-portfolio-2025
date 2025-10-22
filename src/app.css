@@ -1,0 +1,345 @@
+/* Import Fira Code font */
+
+/* Import Gruvbox Dark theme for code highlighting */
+@import 'prism-themes/themes/prism-gruvbox-dark.css';
+
+@import 'tailwindcss';
+
+/* Dark theme custom properties for Tailwind */
+/* stylelint-disable-next-line at-rule-no-unknown */
+@theme {
+	--color-bg-primary: #1e1e1e;
+	--color-bg-secondary: #212121;
+	--color-text: #b3b3b3;
+	--color-text-muted: #888888;
+	--color-primary: #c92a2a;
+	--color-border: #333333;
+
+	--font-family-mono: 'Fira Code', monospace;
+	--font-family-sans:
+		-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+	/* Consistent Spacing System - 8px base scale */
+	--space-1: 0.25rem; /* 4px  - tight spacing */
+	--space-2: 0.5rem; /* 8px  - small spacing */
+	--space-3: 0.75rem; /* 12px - medium-small spacing */
+	--space-4: 1rem; /* 16px - base spacing unit */
+	--space-5: 1.25rem; /* 20px - medium spacing */
+	--space-6: 1.5rem; /* 24px - large spacing */
+	--space-8: 2rem; /* 32px - section spacing */
+	--space-12: 3rem; /* 48px - major section spacing */
+	--space-16: 4rem; /* 64px - page spacing */
+
+	/* Design System Usage Guidelines:
+	 * --space-1: Element spacing (badges, tight gaps)
+	 * --space-2: Small component spacing (buttons, tags)
+	 * --space-4: Default component spacing (cards, inputs)
+	 * --space-6: Section spacing (between components)
+	 * --space-8: Page section spacing (main content areas)
+	 * --space-16: Major page spacing (top/bottom page margins)
+	 */
+}
+
+/* Base body styles */
+body {
+	@apply bg-bg-primary text-text min-h-screen font-mono leading-relaxed;
+	font-size: 14px;
+}
+
+@media (min-width: 768px) {
+	body {
+		font-size: 16px;
+	}
+}
+
+/* Global link styles */
+a {
+	@apply text-text no-underline transition-all duration-300;
+}
+
+a:hover {
+	@apply text-primary;
+}
+
+/* List reset */
+ul {
+	list-style-position: inside;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-bg-primary;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply bg-border rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-primary;
+}
+
+/* Base card styles */
+.section-card {
+	@apply bg-bg-secondary border-border relative overflow-hidden border shadow-lg transition-all duration-300;
+	margin-bottom: var(--space-6);
+	padding: var(--space-4);
+}
+
+.section-card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+	transition: left 0.5s ease;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.section-card:hover::before {
+	left: 100%;
+}
+
+.section-card:hover {
+	@apply border-primary;
+	box-shadow: 0 8px 25px -3px rgba(201, 42, 42, 0.15);
+}
+
+.section-title {
+	@apply text-text border-border relative border-b text-lg font-semibold md:text-xl;
+	margin-bottom: var(--space-4);
+	padding-bottom: var(--space-2);
+}
+
+.section-title::after {
+	content: '';
+	@apply bg-primary absolute -bottom-px left-0 h-px w-0 transition-all duration-300;
+}
+
+.section-card:hover .section-title::after {
+	width: 30%;
+}
+
+/* Container and layout */
+.container {
+	@apply mx-auto max-w-6xl;
+	padding-left: var(--space-4);
+	padding-right: var(--space-4);
+}
+
+@media (min-width: 768px) {
+	.container {
+		padding-left: var(--space-6);
+		padding-right: var(--space-6);
+	}
+}
+
+.main-grid {
+	@apply grid grid-cols-1 opacity-100 lg:grid-cols-[1fr_2fr];
+	margin-top: var(--space-8);
+	gap: var(--space-6);
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 1024px) {
+	.main-grid {
+		grid-template-columns: 1fr;
+		gap: var(--space-4);
+	}
+}
+
+@media (max-width: 768px) {
+	.main-grid {
+		margin-top: var(--space-4);
+		gap: var(--space-3);
+	}
+
+	.container {
+		padding-left: var(--space-3);
+		padding-right: var(--space-3);
+	}
+}
+
+/* Button styles */
+.btn {
+	@apply border-border text-text relative cursor-pointer overflow-hidden border bg-transparent px-4 py-2 font-mono text-sm transition-all duration-300;
+	outline: none; /* Remove focus outline */
+}
+
+.btn:focus {
+	outline: none; /* Remove focus outline */
+}
+
+.btn::before {
+	content: '';
+	@apply absolute top-0 -left-full h-full w-full transition-all duration-500;
+	background: linear-gradient(90deg, transparent, rgba(201, 42, 42, 0.1), transparent);
+}
+
+.btn:hover::before {
+	@apply left-full;
+}
+
+.btn:hover {
+	@apply border-primary text-primary;
+}
+
+/* Secondary button variant */
+.btn-secondary {
+	@apply border-border text-text-muted relative cursor-pointer overflow-hidden border bg-transparent px-3 py-2 font-mono text-xs transition-all duration-300;
+	outline: none;
+}
+
+.btn-secondary:focus {
+	outline: none;
+}
+
+.btn-secondary::before {
+	content: '';
+	@apply absolute top-0 -left-full h-full w-full transition-all duration-500;
+	background: linear-gradient(90deg, transparent, rgba(108, 117, 125, 0.1), transparent);
+}
+
+.btn-secondary:hover::before {
+	@apply left-full;
+}
+
+.btn-secondary:hover {
+	@apply border-text-muted text-text;
+}
+
+/* Placeholder boxes */
+.placeholder-box {
+	@apply bg-bg-primary border-border text-text-muted relative mb-4 flex h-32 items-center justify-center border text-sm transition-all duration-300;
+}
+
+.placeholder-box:hover {
+	@apply border-primary text-primary;
+	background-color: rgba(201, 42, 42, 0.05);
+}
+
+/* Profile section styles */
+.profile-name {
+	@apply text-text mb-1 text-xl font-bold tracking-wide md:text-2xl;
+}
+
+.profile-title {
+	@apply text-text mb-1 text-sm md:text-base;
+}
+
+/* Focus and selection styles */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+	@apply outline-primary outline-2 outline-offset-2;
+}
+
+/* Remove focus outlines for game buttons */
+.mode-btn:focus,
+.btn:focus {
+	outline: none !important;
+}
+
+::selection {
+	@apply bg-primary text-text;
+}
+
+/* Copy button styles for code blocks */
+.copy-code-button {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	background: rgba(248, 248, 248, 0.15);
+	color: #f8f8f8;
+	border: 1px solid rgba(248, 248, 248, 0.3);
+	border-radius: 4px;
+	padding: 0.5rem;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	backdrop-filter: blur(4px);
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+}
+
+.copy-code-button:hover {
+	background: rgba(248, 248, 248, 0.15);
+	border-color: rgba(248, 248, 248, 0.4);
+	color: #c92a2a;
+}
+
+.copy-code-button.copied {
+	background: rgba(201, 42, 42, 0.2);
+	border-color: #c92a2a;
+	color: #c92a2a;
+}
+
+.copy-code-button:focus {
+	outline: 2px solid #c92a2a;
+	outline-offset: 2px;
+}
+
+/* Markdown content tweaks */
+
+/* Bold / strong text */
+strong,
+b {
+	color: var(--color-primary);
+	font-weight: 700;
+}
+
+/* Lists */
+ul {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+
+ol {
+	list-style-type: decimal;
+	list-style-position: inside;
+}
+
+/* Blockquotes */
+blockquote {
+	@apply border-primary text-text-muted my-6 border-l-4 pl-4 italic;
+	display: block;
+}
+
+/* Details / summary */
+details summary {
+	@apply text-text-muted hover:text-primary inline-flex cursor-pointer list-none items-center gap-2 transition-colors duration-300;
+}
+
+details summary::-webkit-details-marker {
+	display: none;
+}
+
+/* Table styling */
+table {
+	@apply border-border my-6 w-full border text-left;
+}
+
+th,
+td {
+	@apply border-border border-b px-4 py-2;
+}
+
+th {
+	@apply bg-bg-secondary text-text font-semibold;
+}
+
+tr:last-child td {
+	@apply border-b-0;
+}
