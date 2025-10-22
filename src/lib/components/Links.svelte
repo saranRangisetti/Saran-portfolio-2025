@@ -1,5 +1,5 @@
 <script>
-	import { Link, Mail, Github, ShieldHalf, Linkedin } from 'lucide-svelte';
+	import { Link, Mail, Github, Linkedin } from 'lucide-svelte';
 </script>
 
 <section class="section-card">
@@ -12,12 +12,6 @@
 			class="text-text-muted py-1r flex items-center gap-2 px-2"
 		>
 			<Mail size={16} class="text-primary" /> srangisetti@usf.edu
-		</a>
-		<a
-			href="tel:+1-813-415-6283"
-			class="text-text-muted flex items-center gap-2 px-2 py-1"
-		>
-			<ShieldHalf size={16} class="text-primary" /> +1-813-415-6283
 		</a>
 		<a
 			href="https://github.com/saranRangisetti"
