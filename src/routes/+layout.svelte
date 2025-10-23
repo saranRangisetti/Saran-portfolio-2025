@@ -37,16 +37,16 @@
 	<meta name="geo.placename" content="Tampa, FL" />
 	<meta name="geo.position" content="27.9506;-82.4572" />
 	<meta name="ICBM" content="27.9506, -82.4572" />
-	<title>Sai Saran Rangisetti - Full-Stack Engineer & AI Specialist</title>
+	<title>Sai Saran Rangisetti - Data Scientist & AI Specialist</title>
 
 	<!-- Open Graph -->
 	<meta
 		property="og:title"
-		content="Sai Saran Rangisetti - Full-Stack Engineer & AI Specialist"
+		content="Sai Saran Rangisetti - Data Scientist & AI Specialist"
 	/>
 	<meta
 		property="og:description"
-		content="Full-stack software developer creating web applications, AI systems, and interactive experiences with modern technologies. Available for remote collaboration worldwide."
+		content="Data Scientist and AI Specialist creating intelligent systems, machine learning models, and data-driven solutions. Available for remote collaboration worldwide."
 	/>
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://anishshrestha.com" />
@@ -55,10 +55,10 @@
 
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="Sai Saran Rangisetti - Full-Stack Engineer & AI Specialist" />
+	<meta name="twitter:title" content="Sai Saran Rangisetti - Data Scientist & AI Specialist" />
 	<meta
 		name="twitter:description"
-		content="Full-stack software developer creating web applications, AI systems, and interactive experiences."
+		content="Data Scientist and AI Specialist creating intelligent systems, machine learning models, and data-driven solutions."
 	/>
 
 	<!-- JSON-LD Schema -->
